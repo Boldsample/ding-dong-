@@ -2,11 +2,16 @@ import React from 'react'
 import "./login.css";
 import loginImg from '../../imgs/dingdong.jpg'
 import logo from '../../imgs/ding-dongLogo.svg'
-
+   
 const Login = () => {
   return (
     <div className='login-container'>
-        <img src={loginImg} alt="" width='400px' />
+        <div className="login-image__container">
+            <div className="login-text__container">
+                <p className='login-text'>Ding-Dong is an app designed to streamline the turn management process in customer experience centers.</p>
+                <button className='login-btn --back-btn'>Back to waiting board</button>
+            </div>
+        </div>
         <div className="login-card">
             <form className='login-form' action="">
                 <img className='login-logo' src={logo} alt="" width='150px' />
