@@ -1,0 +1,41 @@
+.turn__card{
+    height: 90px;
+    width: 90%;
+    background-color: rgb(43, 80, 226);
+    border-radius: 3px;
+    margin: 20px;
+}
+
+.turn-name__container{
+    display: flex;
+    align-items: center;
+    position: relative;;
+    background-color: #fff;
+    height: 50%;
+    
+}
+
+.turn-name__container h2{
+    margin-left: 10px;
+}
+
+.turn-name__triangle{
+    position: absolute;
+    top: 45px;
+    right: 30px;
+    border-top: 15px solid #fff;
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+
+}
+
+.turn-module__container{
+    display: flex;
+    align-items: center;
+    height: 50%;
+}
+
+.turn-module__container p{
+    color: white;
+    margin-left: 10px;
+}
