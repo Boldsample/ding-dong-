@@ -4,6 +4,7 @@
     background-color: rgb(43, 80, 226);
     border-radius: 3px;
     margin: 20px;
+    box-shadow: 3px 5px 23px -10px rgba(0,0,0,0.9);
 }
 
 .turn-name__container{

@@ -4,7 +4,10 @@ import NameCard from '../turnCard/TurnCard'
 
 const AttendingList = () => {
   return (
+    <>
     <NameCard/>
+    <NameCard/>
+    </>
   )
 }
 
