@@ -1,22 +1,33 @@
 .turn__card{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     height: 90px;
     width: 90%;
-    background-color: rgb(43, 80, 226);
-    border-radius: 3px;
-    margin: 20px;
-    box-shadow: 3px 5px 23px -10px rgba(0,0,0,0.9);
+    background-color: white;
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: 3px 5px 23px -10px rgba(0,0,0,0.4);
+    border: 1px solid rgb(184, 184, 184);
+}
+
+.turn-img__container{
+    width: 70px;
+}
+
+.turn-img__container img{
+    margin-left: 15px;
 }
 
 .turn-name__container{
     display: flex;
-    align-items: center;
-    position: relative;;
-    background-color: #fff;
-    height: 50%;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
     
 }
 
-.turn-name__container h2{
+.turn-name__container *{
     margin-left: 10px;
 }
 

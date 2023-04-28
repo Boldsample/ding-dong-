@@ -1,7 +1,6 @@
 .status-board__container{
     display: grid;
     grid-template-columns: 4fr 2fr;
-    background-color: blue;
     width: 100%;
     height: 90vh;
 }
@@ -9,6 +8,7 @@
 .attending-list__container{
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 100%;
     background-color: #d8e9f0;;
 }
@@ -16,15 +16,44 @@
 .nav-main-section{
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     height: 100%;
     width: 100%;
 }
 
-.status-board__nav{
-height: 20%;
+.status-board__main{
+    height: 80%;
+    width: 100%;
+    background-color: red;
 }
 
-.status-board__main{
+.video-wrapper{
+    position: relative;
+    overflow: hidden;
     height: 100%;
-    background-color: red;
+}
+
+iframe{
+    /* align-items: center; */
+    overflow: hidden;
+    border: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.status-board__footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.developed-by__container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

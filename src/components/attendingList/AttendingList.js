@@ -1,12 +1,12 @@
 import React from 'react'
 import './attendinglist.css'
-import NameCard from '../turnCard/TurnCard'
+import TurnCard from '../turnCard/TurnCard'
 
 const AttendingList = () => {
   return (
     <>
-    <NameCard/>
-    <NameCard/>
+    <TurnCard/>
+    <TurnCard/>
     </>
   )
 }

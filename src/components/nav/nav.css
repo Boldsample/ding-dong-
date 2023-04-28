@@ -1,0 +1,12 @@
+
+.status-board__nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 20%;
+    width: 100%;
+    border: 1px solid rgb(184, 184, 184);
+    padding: 10px;
+    }
+    
