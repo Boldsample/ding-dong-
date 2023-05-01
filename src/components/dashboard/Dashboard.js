@@ -1,18 +1,15 @@
 import React from 'react'
-import logo from '../../imgs/ding-dongLogo.svg'
 import statusBoard from '../../imgs/clock.png'
 import manageTurn from '../../imgs/pen.png'
 import addTurn from '../../imgs/speech_bubble.png'
 import './dashboard.css'
+import DashboardNav from '../dashboardNav/DashboardNav'
 
 const Dashboard = () => {
   return (
     <>
     <header>
-    <nav className='dashboard__nav'>
-    <img src={logo} alt="" />
-    <button className='login-btn'>Log Out</button>
-    </nav>
+    <DashboardNav/>
     </header>
     <main className='dashboard__container'>
       <div className="links__container">

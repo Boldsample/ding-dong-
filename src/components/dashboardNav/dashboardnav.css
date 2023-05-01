@@ -1,0 +1,10 @@
+.dashboard__nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid lightgrey;
+    /* box-shadow: 3px 5px 23px -10px rgba(0,0,0,0.4); */
+    height: 12vh;
+    
+}

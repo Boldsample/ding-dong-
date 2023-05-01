@@ -1,0 +1,17 @@
+.form__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 200px;
+    border-radius: 5px;
+    box-shadow: 3px 5px 23px -10px rgba(0,0,0,0.4);
+    /* border: 1px solid rgb(184, 184, 184); */
+    margin: 10px;
+    background-color: white;
+    padding: 10px;
+}
+
+.add-turn--variation{
+    margin-right: 10px;
+}
