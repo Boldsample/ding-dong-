@@ -34,6 +34,9 @@ width: 100%;
     margin: 10px;
     background-color: white;
     cursor: pointer;
+    border: none;
+    text-decoration: none;
+    color: rgb(46, 46, 46);
 }
 
 .small__container h2{
@@ -57,6 +60,9 @@ width: 100%;
     width: 100%;
     background-color: white;
     cursor: pointer;
+    border: none;
+    text-decoration: none;
+    color: rgb(46, 46, 46);
 }
 
 .large__container h2{

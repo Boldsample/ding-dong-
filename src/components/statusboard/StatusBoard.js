@@ -4,6 +4,7 @@ import Nav from '../nav/Nav'
 import './statusboard.css'
 import YouTube from 'react-youtube';
 import dingDongLogo from '../../imgs/ding-dong-nologo.svg'
+import { Link } from 'react-router-dom';
 
 const StatusBoard = () => {
 
@@ -37,7 +38,9 @@ const StatusBoard = () => {
     </div>
     <footer className='status-board__footer'>
         <div className="login__button">
+            <Link to='/'>
             <button className='login-btn'>Login</button>
+            </Link>
         </div>
         <div className="developed-by__container">
             <h1>Powered by:</h1>
