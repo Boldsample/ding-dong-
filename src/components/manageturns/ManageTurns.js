@@ -1,12 +1,13 @@
-import React from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import './manageturns.css'
 import DashboardNav from '../dashboardNav/DashboardNav'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClose } from '@fortawesome/free-solid-svg-icons'
-import { faClock } from '@fortawesome/free-solid-svg-icons'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
+import Turn from '../turn/Turn'
+import { UsersContext } from '../../storage/usersContext'
 
 const ManageTurns = () => {
+    const context = useContext(UsersContext)
+    const {client, setClient, handleSave, clientList} = context.value;
+    console.log(clientList)
   return (
     <>
     <header>
@@ -22,25 +23,7 @@ const ManageTurns = () => {
                 <td className='table__title'>Actions</td>
             </thead>
                 <tbody className='table__body'>
-                    <tr>
-                        <td><FontAwesomeIcon className='icon-styles' icon={faUser}/> Juan Jacobo Viera</td>
-                        <td>8583892</td>
-                        <td>1:51</td>
-                        <td>
-                        <p className='module-style'>Module 2</p>
-                        </td>
-                        <td><button className='table__btn'><FontAwesomeIcon icon={faClock}/></button><button className='table__btn'><FontAwesomeIcon icon={faClose}/></button></td>
-                        
-                    </tr>
-                    <tr>
-                        <td><FontAwesomeIcon className='icon-styles' icon={faUser}/> Juan Jacobo Viera</td>
-                        <td>8583892</td>
-                        <td>1:51</td>
-                        <td>
-                            <p className='module-style'>Module 1</p>
-                        </td>
-                        <td><button className='table__btn'><FontAwesomeIcon icon={faClock}/></button><button className='table__btn'><FontAwesomeIcon icon={faClose}/></button></td>
-                    </tr>
+                   {clientList.map((client)=> <Turn client={client}/>)}
                 </tbody>
         </table>
     </main>

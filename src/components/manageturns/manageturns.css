@@ -31,26 +31,3 @@ td{
     border: 1px solid lightgray;
 }
 
-.table__btn{
-    padding: 5px 10px;
-    margin: 0 2px;
-    background-color: white;
-    border: 1px solid rgb(161, 161, 161);
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.icon-styles{
-    margin-right: 5px;
-    color: rgb(65 65 212);
-}
-
-.module-style{
-    background-color: rgb(65 65 212);
-    width: 100px;
-    color: white;
-    border-radius: 10px;
-    text-align: center;
-    padding: 5px;
-
-}
