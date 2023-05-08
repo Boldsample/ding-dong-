@@ -5,7 +5,7 @@ import { UsersContext } from '../../storage/usersContext';
 
 const AddTurn = () => {
   const context = useContext(UsersContext)
-  const {client, setClient, handleSave, assignModuleToPerson, modules} = context.value;
+  const {client, setClient, handleSave, assignModuleToPerson, modules, setModules, clientList, setClientList} = context.value;
 
   function handleChange(evt) {
     const value = evt.target.value;
@@ -31,9 +31,20 @@ const AddTurn = () => {
               e.preventDefault()
               handleSave()
               client.startCountdown()
-              const success = assignModuleToPerson(client, modules);
-              if (success) {
-                console.log(`Module ${client.module.id} assigned to ${client.name}`);
+              console.log(modules)
+              console.log('hello')
+              const assignedPerson = assignModuleToPerson(client, modules);
+              if (assignedPerson) {
+                const updatedModules = modules.map(module => {
+                  if (module.id === assignedPerson.module.id) {
+                    return assignedPerson.module;
+                  } else {
+                    return module;
+                  }
+                });
+                console.log(updatedModules)
+                setModules(updatedModules);
+                setClientList([...clientList, assignedPerson]);
               } else {
                 console.log('No available modules');
               }

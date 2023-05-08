@@ -49,19 +49,30 @@ export const UserContextProvider = (props) =>{
       })
 
     function assignModuleToPerson(person, modules) {
+      console.log(modules)
       const availableModules = modules.filter(module => !module.busy);
       if (availableModules.length > 0) {
         const randomIndex = Math.floor(Math.random() * availableModules.length);
-        const selectedModule = availableModules[randomIndex];
-        selectedModule.busy = true;
-        person.module = selectedModule;
-        return true; // successful assignment
+        const selectedModule = { ...availableModules[randomIndex], busy: true };
+        const assignedPerson = { ...person, module: selectedModule, status: 'open'};
+        return assignedPerson;
       } else {
-        return false; // no available modules
+        return null; // no available modules
       }
     }
 
-    
+    const removeModuleFromPerson = (id, clients, modules) => {
+      const client = clients.find(client => client.id == id)
+      console.log(modules)
+        const module = modules.find(module => module.id == client.module.id);
+        module.busy = false;
+        setModules(...modules)
+        console.log(modules, 'after')
+        client.status = 'closed'
+        console.log(clientList)
+      
+    }
+
       function handleChange(evt) {
         const value = evt.target.value;
         setClient({
@@ -80,6 +91,8 @@ export const UserContextProvider = (props) =>{
       console.log(clientList)
 
       const value = {
+        removeModuleFromPerson,
+        setModules,
         modules,
         assignModuleToPerson,
         client,

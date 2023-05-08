@@ -7,7 +7,6 @@ import { UsersContext } from '../../storage/usersContext'
 const ManageTurns = () => {
     const context = useContext(UsersContext)
     const {client, setClient, handleSave, clientList} = context.value;
-    console.log(clientList)
   return (
     <>
     <header>
