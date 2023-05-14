@@ -9,99 +9,83 @@ export const UserContextProvider = (props) =>{
       id: 1,
       name: 'module 1',
       busy: false,
+      clientId: undefined
     },
     {
       id: 2,
       name: 'module 2',
       busy: false,
+      clientId: undefined
+
     },{
       id: 3,
       name: 'module 3',
       busy: false,
+      clientId: undefined
+
     },{
       id: 4,
       name: 'module 4',
-      busy: true,
+      busy: false,
+      clientId: undefined
+
     },{
       id: 5,
       name: 'module 5',
       busy: false,
-    },
+      clientId: undefined
+    }
   
   ])
 
-    const [client, setClient] = useState({
-        name: '',
-        id: '',
-        module: null,
-        startCountdown() {
-          const intervalId = setInterval(() => {
-            if (this.countdown <= 0) {
-              clearInterval(intervalId);
-              console.log("Countdown finished!");
-              return;
+    function assignPersonToModule(client = false) {
+      let assignedClients = [...clientList]
+      let assignedModules = [...modules]
+
+      if(client){
+        assignedClients.push(client)
+      }
+      assignedModules.map(module => {
+        if(!module.busy){
+         let freeClient = null;
+         assignedClients.map(client => {
+            if(client.status === 'onQueue' && freeClient === null){
+              client.status = 'onService';
+              freeClient = client.id;
+              client.date = new Date().getTime()
+              module.clientId = freeClient;
+              module.busy = true 
+              console.log("asignacion de cliente", module, client)
             }
-            this.countdown -= 1;
-            // console.log(`Countdown: ${this.countdown}`);
-          }, 1000);
+            
+            return client
+         })
+
         }
-
+        return module
       })
-
-    function assignModuleToPerson(person, modules) {
-      console.log(modules)
-      const availableModules = modules.filter(module => !module.busy);
-      if (availableModules.length > 0) {
-        const randomIndex = Math.floor(Math.random() * availableModules.length);
-        const selectedModule = { ...availableModules[randomIndex], busy: true };
-        const assignedPerson = { ...person, module: selectedModule, status: 'open'};
-        return assignedPerson;
-      } else {
-        return null; // no available modules
-      }
+      setModules(assignedModules)
+      setClientList(assignedClients)
     }
 
-    const removeModuleFromPerson = (id, clients, modules) => {
-      const client = clients.find(client => client.id == id)
-      console.log(modules)
-        const module = modules.find(module => module.id == client.module.id);
-        module.busy = false;
-        setModules(...modules)
-        console.log(modules, 'after')
-        client.status = 'closed'
-        console.log(clientList)
-      
+    const findModule = (client, modules) =>{
+        const correctModule = modules.find(module =>{
+          return module.clientId == client.id
+        })
+        return correctModule
     }
 
-      function handleChange(evt) {
-        const value = evt.target.value;
-        setClient({
-          ...client,
-          [evt.target.name]: value
-        });
-      }
-
-      const handleSave = () =>{
-        setClientList([
-          ...clientList,
-          client
-        ])
-      }
-      
-      console.log(clientList)
-
-      const value = {
-        removeModuleFromPerson,
+    const value = {
+        findModule,
         setModules,
         modules,
-        assignModuleToPerson,
-        client,
-        setClient,
+        assignPersonToModule,
         clientList,
         setClientList,
-        handleSave
       }
 
+      console.log(clientList)
+    console.log(modules)
       return (
         <UsersContext.Provider value={{value}}>
            {props.children}

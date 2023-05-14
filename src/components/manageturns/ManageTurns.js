@@ -7,6 +7,8 @@ import { UsersContext } from '../../storage/usersContext'
 const ManageTurns = () => {
     const context = useContext(UsersContext)
     const {client, setClient, handleSave, clientList} = context.value;
+ 
+
   return (
     <>
     <header>
@@ -22,7 +24,7 @@ const ManageTurns = () => {
                 <td className='table__title'>Actions</td>
             </thead>
                 <tbody className='table__body'>
-                   {clientList.map((client)=> <Turn client={client}/>)}
+                   {clientList.map((client)=> <Turn key={client.id} client={client}/>)}
                 </tbody>
         </table>
     </main>

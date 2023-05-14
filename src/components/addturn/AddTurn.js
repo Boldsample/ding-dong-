@@ -3,16 +3,22 @@ import './addturn.css'
 import DashboardNav from '../dashboardNav/DashboardNav'
 import { UsersContext } from '../../storage/usersContext';
 
+
 const AddTurn = () => {
   const context = useContext(UsersContext)
-  const {client, setClient, handleSave, assignModuleToPerson, modules, setModules, clientList, setClientList} = context.value;
+  const { assignPersonToModule} = context.value;
+  const [client, setClient] = useState({
+    name: '',
+    id: '',
+    status: 'onQueue'
+  })
 
   function handleChange(evt) {
     const value = evt.target.value;
     setClient({
       ...client,
       [evt.target.name]: value,
-      countdown: 60,
+      date: null
     });
   }
   return (
@@ -29,25 +35,13 @@ const AddTurn = () => {
             <input className='login-input add-turn--variation' onChange={handleChange} name='id' value={client.id} type="number" />
             <button className='login-btn add-turn--variation' onClick={(e)=>{
               e.preventDefault()
-              handleSave()
-              client.startCountdown()
-              console.log(modules)
-              console.log('hello')
-              const assignedPerson = assignModuleToPerson(client, modules);
-              if (assignedPerson) {
-                const updatedModules = modules.map(module => {
-                  if (module.id === assignedPerson.module.id) {
-                    return assignedPerson.module;
-                  } else {
-                    return module;
-                  }
-                });
-                console.log(updatedModules)
-                setModules(updatedModules);
-                setClientList([...clientList, assignedPerson]);
-              } else {
-                console.log('No available modules');
-              }
+              
+              assignPersonToModule(client);
+             setClient({
+              name: '',
+              id: '',
+              status: 'onQueue'
+            })
             
             }}>Create Turn</button>
             </form>
@@ -58,3 +52,4 @@ const AddTurn = () => {
 }
 
 export default AddTurn
+
