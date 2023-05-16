@@ -10,14 +10,13 @@ import { useCountdown } from '../../hooks/useCountdown';
 const Turn = ({client}) => {
   const context = useContext(UsersContext)
   const { setClient, handleSave, clientList, removeModuleFromPerson, modules, findModule, setModules, assignPersonToModule, setClientList} = context.value;
-  const [countDown, setCountDown] = useState(Math.floor((new Date() - client.date) * 0.001))
+  const [countDown, setCountDown] = useState(Math.floor((client.date === null ? 60 : new Date() - client.date) * 0.001))
   const clientModule = findModule(client, modules)
- console.log(countDown)
  useEffect(()=>{
-  if(countDown < 60 && client.status == 'onService' ){
+  if(client.status == 'onService' ){
     const interval = setTimeout(() => {
       setCountDown(Math.floor((new Date() - client.date) * 0.001));
-    }, 1000);    
+    }, 1000);   
   }
   if(60 - countDown === 0 ){
     let updatedClientList = [...clientList]
@@ -36,7 +35,8 @@ const Turn = ({client}) => {
             }
           })
     })
-    assignPersonToModule()  
+    assignPersonToModule()
+    
   }
 }, [countDown, clientList])
 
@@ -47,10 +47,9 @@ console.log(clientList, modules)
     <tr>
         <td><FontAwesomeIcon className='icon-styles' icon={faUser}/>{client.name}</td>
         <td>{client.id}</td>
-        <td>{client.status == "onQueue" ? 'Please Wait' :60 - countDown <= 0 ? 'Expired' : 60 - countDown }</td>
+        <td>{client.status == "onQueue" ? 'Please Wait' : client.status == "onService" ?  60 - countDown : 'Expired'}</td>
         <td>
-        {/* <p className='module-style'>{60 - countDown <= 0  ? 'Closed' : client.status == 'onService' ? clientModule.name : client.status === "onQueue" ? client.status : '' }</p> */}
-        <p className='module-style'>{client.status === "onQueue" || client.date === null ? client.status : 60 - countDown <= 0  ? 'Closed' : client.status == 'onService' ? clientModule.name :  '' }</p>
+        <p className='module-style'>{client.status === "onQueue" ? client.status : client.status == 'onService' ? clientModule.name : 60 - countDown <= 0  ? 'Closed' :  '' }</p>
         </td>
         <td><button className='table__btn'><FontAwesomeIcon icon={faClock}/></button><button className='table__btn'><FontAwesomeIcon icon={faClose}/></button></td>             
 </tr>
