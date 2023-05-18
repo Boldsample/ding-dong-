@@ -40,7 +40,8 @@ const AddTurn = () => {
              setClient({
               name: '',
               id: '',
-              status: 'onQueue'
+              status: 'onQueue',
+              createdDate: new Date()
             })
             
             }}>Create Turn</button>
